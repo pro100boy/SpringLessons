@@ -1,3 +1,3 @@
 public interface EventLogger {
-    public void logEvent(String msg);
+    void logEvent(Event event);
 }

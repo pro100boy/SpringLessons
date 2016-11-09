@@ -3,8 +3,8 @@ public class ConsoleEventLogger implements EventLogger{
     public ConsoleEventLogger() {
     }
 
-    public void logEvent(String msg)
+    public void logEvent(Event event)
     {
-        System.out.println(msg);
+        System.out.println(event.toString());
     }
 }

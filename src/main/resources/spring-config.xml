@@ -10,8 +10,26 @@
 
     <bean id="eventLogger" class="ConsoleEventLogger"/>
 
+
     <bean id="app" class="App">
         <constructor-arg ref="eventLogger"/>
         <constructor-arg ref="client"/>
     </bean>
+
+    <!--scope="prototype" - класс event будет создаваться каждый раз, а не единожды синглтоном-->
+    <bean id="event" class="Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg>
+            <!--т.к. DateFormat - это abstract class, нужно вызывать у него статич. метод getDateTimeInstance-->
+            <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+        </constructor-arg>
+    </bean>
+
+    <!--передаем в конструктор имя лог-файла-->
+    <bean id="fileEventLogger" class="FileEventLogger">
+        <constructor-arg value="c:\\log.txt"/>
+    </bean>
+
 </beans>
