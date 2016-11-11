@@ -11,7 +11,7 @@
     <bean id="eventLogger" class="ConsoleEventLogger"/>
 
     <bean id="app" class="App">
-        <constructor-arg ref="eventLogger"/>
+        <constructor-arg ref="fileEventLogger"/>
         <constructor-arg ref="client"/>
     </bean>
 
@@ -32,4 +32,7 @@
         <constructor-arg value="c:\\111.txt"/>
     </bean>
 
+    <bean id="cacheFileEventLogger" class="CacheFileEventLogger" destroy-method="destroy">
+        <constructor-arg value="10"/>
+    </bean>
 </beans>

@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileEventLogger implements EventLogger{
-    private final String fileName;
-    //private File file;
+    private String fileName;
+
+    public FileEventLogger() {
+    }
 
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
