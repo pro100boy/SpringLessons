@@ -10,7 +10,6 @@
 
     <bean id="eventLogger" class="ConsoleEventLogger"/>
 
-
     <bean id="app" class="App">
         <constructor-arg ref="eventLogger"/>
         <constructor-arg ref="client"/>
@@ -28,8 +27,9 @@
     </bean>
 
     <!--передаем в конструктор имя лог-файла-->
-    <bean id="fileEventLogger" class="FileEventLogger">
-        <constructor-arg value="c:\\log.txt"/>
+    <!--вызов метода init()-->
+    <bean id="fileEventLogger" class="FileEventLogger" init-method="init">
+        <constructor-arg value="c:\\111.txt"/>
     </bean>
 
 </beans>

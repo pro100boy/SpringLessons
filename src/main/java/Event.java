@@ -24,7 +24,7 @@ public class Event {
     public String toString() {
         return "Event{" +
                 "id=" + id +
-                ", msg='" + msg + '\'' +
+                ", msg='" + msg + "\', " +
                 df.format(date) +
                 '}';
     }

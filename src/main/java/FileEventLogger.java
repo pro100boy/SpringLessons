@@ -5,6 +5,7 @@ import java.io.IOException;
 
 public class FileEventLogger implements EventLogger{
     private final String fileName;
+    //private File file;
 
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
@@ -17,5 +18,12 @@ public class FileEventLogger implements EventLogger{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void init() throws IOException
+    {
+        //this.file = new File(fileName);
+        //check file write access
+        if (!new File(fileName).canWrite()) throw new IOException("fileName isn't access");
     }
 }
