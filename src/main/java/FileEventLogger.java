@@ -6,9 +6,6 @@ import java.io.IOException;
 public class FileEventLogger implements EventLogger{
     private String fileName;
 
-    public FileEventLogger() {
-    }
-
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
     }

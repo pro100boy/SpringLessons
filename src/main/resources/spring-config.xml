@@ -32,7 +32,12 @@
         <constructor-arg value="c:\\111.txt"/>
     </bean>
 
-    <bean id="cacheFileEventLogger" class="CacheFileEventLogger" destroy-method="destroy">
+    <!--<bean id="cacheFileEventLogger" class="CacheFileEventLogger" init-method="init" destroy-method="destroy">
+        <constructor-arg value="c:\\111.txt"/>
+        <constructor-arg value="10"/>
+    </bean>-->
+    <bean id="cacheFileEventLogger" class="CacheFileEventLogger" parent="fileEventLogger" destroy-method="destroy">
         <constructor-arg value="10"/>
     </bean>
+
 </beans>
