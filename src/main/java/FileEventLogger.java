@@ -3,26 +3,34 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-public class FileEventLogger implements EventLogger{
-    private String fileName;
+public class FileEventLogger implements EventLogger {
 
-    public FileEventLogger(String fileName) {
-        this.fileName = fileName;
+    private File file;
+    private String filename;
+
+    public FileEventLogger(String filename) {
+        this.filename = filename;
     }
 
-    public void logEvent(Event event) {
-        // append to file
-        try {
-            FileUtils.writeStringToFile(new File(fileName), event.toString() + "\n", "UTF-8", true);
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void init() {
+        file = new File(filename);
+        if (file.exists() && !file.canWrite()) {
+            throw new IllegalArgumentException("Can't write to file " + filename);
+        } else if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (Exception e) {
+                throw new IllegalArgumentException("Can't create file", e);
+            }
         }
     }
 
-    public void init() throws IOException
-    {
-        //this.file = new File(fileName);
-        //check file write access
-        if (!new File(fileName).canWrite()) throw new IOException("fileName isn't access");
+    @Override
+    public void logEvent(Event event) {
+        try {
+            FileUtils.writeStringToFile(file, event.toString() + "\n", "UTF-8", true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

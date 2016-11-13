@@ -1,16 +1,26 @@
+import java.util.Map;
+
 public class App {
 
     private Client client;
-    private EventLogger eventLogger;
+    private EventLogger defaultLogger;
+    private Map<EventType, EventLogger> loggers;
 
-    public App(Client client, EventLogger eventLogger) {
+    public App(Client client, EventLogger eventLogger, Map<EventType, EventLogger> loggers) {
+        //super();
         this.client = client;
-        this.eventLogger = eventLogger;
+        this.defaultLogger = eventLogger;
+        this.loggers = loggers;
     }
 
-    public void logEvent(Event event) {
-        String message = event.getMsg().replaceAll(client.getId(), client.getFullName());
+    public void logEvent(EventType eventType, Event event, String msg) {
+        String message = msg.replaceAll(client.getId(), client.getFullName());
         event.setMsg(message);
-        eventLogger.logEvent(event);
+
+        EventLogger logger = loggers.get(eventType);
+        if (logger == null) {
+            logger = defaultLogger;
+        }
+        logger.logEvent(event);
     }
 }

@@ -8,11 +8,18 @@
     <bean id="client" class="Client">
         <constructor-arg value="1"/>
         <constructor-arg value="John Smith"/>
+        <property name="greeting" value="Hello there!"/>
     </bean>
 
     <bean id="app" class="App">
-        <constructor-arg ref="fileEventLogger"/>
         <constructor-arg ref="client"/>
+        <constructor-arg ref="cacheFileEventLogger"/>
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="consoleEventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
     </bean>
 
     <!--scope="prototype" - класс event будет создаваться каждый раз, а не единожды синглтоном-->

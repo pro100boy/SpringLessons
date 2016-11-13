@@ -3,12 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="eventLogger" class="ConsoleEventLogger"/>
+    <bean id="consoleEventLogger" class="ConsoleEventLogger"/>
 
     <!--передаем в конструктор имя лог-файла-->
     <!--вызов метода init()-->
     <bean id="fileEventLogger" class="FileEventLogger" init-method="init">
-        <constructor-arg value="c:\\111.txt"/>
+        <constructor-arg value="target/events_log.txt"/>
     </bean>
 
     <!--<bean id="cacheFileEventLogger" class="CacheFileEventLogger" init-method="init" destroy-method="destroy">
@@ -19,4 +19,12 @@
         <constructor-arg value="10"/>
     </bean>
 
+    <bean id="combinedEventLogger" class="CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="consoleEventLogger"/>
+                <ref bean="fileEventLogger"/>
+            </list>
+        </constructor-arg>
+    </bean>
 </beans>

@@ -26,6 +26,6 @@ public class Event {
                 "id=" + id +
                 ", msg='" + msg + "\', " +
                 df.format(date) +
-                '}';
+                "}";
     }
 }
