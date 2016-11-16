@@ -1,3 +1,8 @@
+import beans.Client;
+import beans.Event;
+import beans.EventType;
+import loggers.EventLogger;
+
 import java.util.Map;
 
 public class App {

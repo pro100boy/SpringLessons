@@ -7,10 +7,14 @@
     <groupId>com.yet.spring</groupId>
     <artifactId>com.yet.spring.core</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>Spring Basics Course Project</name>
+    <description>The project created throughout the course 'Spring Framework - The Basics'</description>
 
     <properties>
         <spring.ver>4.3.3.RELEASE</spring.ver>
+        <junit.version>4.11</junit.version>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -47,6 +51,13 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

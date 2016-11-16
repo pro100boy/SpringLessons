@@ -22,7 +22,7 @@
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
     </bean>
 
-    <bean id="client" class="Client" c:id="${id}" c:fullName="${name}" p:greeting="${greeting}"/>
+    <bean id="client" class="beans.Client" c:id="${id}" c:fullName="${name}" p:greeting="${greeting}"/>
         <!--<constructor-arg index="0" value="${id}" />
         <constructor-arg value="${name}"/>
         <property name="greeting" value="${greeting}"/>
@@ -40,7 +40,7 @@
     </bean>
 
     <!--scope="prototype" - класс event будет создаваться каждый раз, а не единожды синглтоном-->
-    <bean id="event" class="Event" scope="prototype">
+    <bean id="event" class="beans.Event" scope="prototype">
         <constructor-arg>
             <bean class="java.util.Date"/>
         </constructor-arg>
