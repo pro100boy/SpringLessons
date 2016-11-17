@@ -6,9 +6,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Container {
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
+
         Client client = ctx.getBean(Client.class);
+        System.out.println("Client says: " + client.getGreeting());
 
         Event event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event, "Some event for 1");

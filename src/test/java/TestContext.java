@@ -16,5 +16,4 @@ public class TestContext {
 
         assertEquals("35", client.getId());
     }
-
 }
