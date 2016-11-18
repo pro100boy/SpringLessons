@@ -22,7 +22,7 @@
         <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
     </bean>
 
-    <bean id="client" class="beans.Client" c:id="${id}" c:fullName="${name}" p:greeting="${greeting}"/>
+    <bean id="client" class="com.yet.spring.core.beans.Client" c:id="${id}" c:fullName="${name}" p:greeting="${greeting}"/>
         <!--<constructor-arg index="0" value="${id}" />
         <constructor-arg value="${name}"/>
         <property name="greeting" value="${greeting}"/>
@@ -33,14 +33,14 @@
         <entry key="ERROR" value-ref="combinedEventLogger"/>
     </util:map>
 
-    <bean id="app" class="App" c:client-ref="client">
+    <bean id="app" class="com.yet.spring.core.App" c:client-ref="client">
         <!--<constructor-arg ref="client"/>-->
         <constructor-arg ref="cacheFileEventLogger"/>
         <constructor-arg ref="loggerMap"/>
     </bean>
 
     <!--scope="prototype" - класс event будет создаваться каждый раз, а не единожды синглтоном-->
-    <bean id="event" class="beans.Event" scope="prototype">
+    <bean id="event" class="com.yet.spring.core.beans.Event" scope="prototype">
         <constructor-arg>
             <bean class="java.util.Date"/>
         </constructor-arg>

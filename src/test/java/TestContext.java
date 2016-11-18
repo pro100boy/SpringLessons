@@ -1,4 +1,4 @@
-import beans.Client;
+import com.yet.spring.core.beans.Client;
 import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

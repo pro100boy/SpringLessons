@@ -1,6 +1,6 @@
-package loggers;
+package com.yet.spring.core.loggers;
 
-import beans.Event;
+import com.yet.spring.core.beans.Event;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

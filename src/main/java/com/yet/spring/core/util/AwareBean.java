@@ -1,4 +1,4 @@
-package util;
+package com.yet.spring.core.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;

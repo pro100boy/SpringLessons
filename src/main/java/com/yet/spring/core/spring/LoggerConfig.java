@@ -1,7 +1,7 @@
-package spring;
+package com.yet.spring.core.spring;
 
-import beans.EventType;
-import loggers.EventLogger;
+import com.yet.spring.core.beans.EventType;
+import com.yet.spring.core.loggers.EventLogger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
