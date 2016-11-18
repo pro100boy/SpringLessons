@@ -49,9 +49,13 @@ public class App {
         Event event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event, "Some event for 1");
 
+        client.setId("2");
+        client.setFullName("Jane Doe");
         event = ctx.getBean(Event.class);
         app.logEvent(EventType.ERROR, event, "Some event for 2");
 
+        client.setId("3");
+        client.setFullName("Janet Jackson");
         event = ctx.getBean(Event.class);
         app.logEvent(null, event, "Some event for 3");
 
