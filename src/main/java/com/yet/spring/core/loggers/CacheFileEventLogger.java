@@ -18,7 +18,8 @@ public class CacheFileEventLogger extends FileEventLogger {
 
     private List<Event> cache;
 
-    public CacheFileEventLogger() {}
+    public CacheFileEventLogger() {
+    }
 
     public CacheFileEventLogger(String filename, int cacheSize) {
         super(filename);
@@ -32,7 +33,7 @@ public class CacheFileEventLogger extends FileEventLogger {
 
     @PreDestroy
     public void destroy() {
-        if ( ! cache.isEmpty()) {
+        if (!cache.isEmpty()) {
             writeEventsFromCache();
         }
     }
@@ -50,4 +51,5 @@ public class CacheFileEventLogger extends FileEventLogger {
     private void writeEventsFromCache() {
         cache.stream().forEach(super::logEvent);
     }
+
 }

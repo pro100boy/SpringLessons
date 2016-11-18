@@ -35,5 +35,5 @@ public class AppConfig {
         client.setGreeting(environment.getProperty("greeting"));
         return client;
     }
-}
 
+}

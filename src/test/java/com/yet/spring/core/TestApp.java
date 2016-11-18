@@ -1,4 +1,5 @@
-import com.yet.spring.core.App;
+package com.yet.spring.core;
+
 import com.yet.spring.core.beans.Client;
 import com.yet.spring.core.beans.Event;
 import com.yet.spring.core.beans.EventType;
@@ -19,7 +20,9 @@ public class TestApp {
     private static final String MSG = "Hello";
 
     @Test
-    public void testClientNameSubstitution() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+    public void testClientNameSubstitution() throws IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException,
+            NoSuchMethodException, SecurityException {
         Client client = createClient();
         DummyLogger dummyLogger = new DummyLogger();
 
@@ -29,11 +32,13 @@ public class TestApp {
 
         invokeLogEvent(app, null, event, MSG + " " + client.getId());
         assertTrue(dummyLogger.getEvent().getMsg().contains(MSG));
-        assertTrue(dummyLogger.getEvent().getMsg().contains(client.getFullName()));
+        assertTrue(
+                dummyLogger.getEvent().getMsg().contains(client.getFullName()));
 
         invokeLogEvent(app, null, event, MSG + " 0");
         assertTrue(dummyLogger.getEvent().getMsg().contains(MSG));
-        assertFalse(dummyLogger.getEvent().getMsg().contains(client.getFullName()));
+        assertFalse(
+                dummyLogger.getEvent().getMsg().contains(client.getFullName()));
     }
 
     private Client createClient() {
@@ -44,15 +49,19 @@ public class TestApp {
     }
 
     @Test
-    public void testCorrectLoggerCall() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    public void testCorrectLoggerCall() throws NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException {
         Client client = createClient();
         DummyLogger defaultLogger = new DummyLogger();
         DummyLogger infoLogger = new DummyLogger();
 
         @SuppressWarnings("serial")
-        App app = new App(client, defaultLogger, new HashMap<EventType, EventLogger>() {{
-            put(EventType.INFO, infoLogger);
-        }});
+        App app = new App(client, defaultLogger,
+                new HashMap<EventType, EventLogger>() {
+                    {
+                        put(EventType.INFO, infoLogger);
+                    }
+                });
 
         Event event = new Event(new Date(), DateFormat.getDateTimeInstance());
 
@@ -75,8 +84,11 @@ public class TestApp {
         assertNotNull(infoLogger.getEvent());
     }
 
-    private void invokeLogEvent(App app, EventType type, Event event, String message) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Method method = app.getClass().getDeclaredMethod("logEvent", EventType.class, Event.class, String.class);
+    private void invokeLogEvent(App app, EventType type, Event event,
+                                String message) throws NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException {
+        Method method = app.getClass().getDeclaredMethod("logEvent",
+                EventType.class, Event.class, String.class);
         method.setAccessible(true);
         method.invoke(app, type, event, message);
     }
@@ -97,5 +109,7 @@ public class TestApp {
         public void setEvent(Event event) {
             this.event = event;
         }
-    }
+
+    };
+
 }

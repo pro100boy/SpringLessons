@@ -9,7 +9,7 @@ import java.util.Collection;
 @Component
 public class CombinedEventLogger implements EventLogger {
 
-    @Resource(name="combinedLoggers")
+    @Resource(name = "combinedLoggers")
     private Collection<EventLogger> loggers;
 
     @Override
@@ -20,5 +20,3 @@ public class CombinedEventLogger implements EventLogger {
     }
 
 }
-
-

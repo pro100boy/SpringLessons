@@ -40,6 +40,8 @@ public class TestConsoleEventLogger {
 
         Assert.assertTrue(outContent.toString().contains(MSG));
 
-        Assert.assertEquals(event.toString().trim(), outContent.toString().trim());
+        Assert.assertEquals(event.toString().trim(),
+                outContent.toString().trim());
     }
+
 }

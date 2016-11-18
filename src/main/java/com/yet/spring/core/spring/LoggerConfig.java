@@ -1,17 +1,18 @@
 package com.yet.spring.core.spring;
 
-import com.yet.spring.core.beans.EventType;
-import com.yet.spring.core.loggers.EventLogger;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+
+import com.yet.spring.core.beans.EventType;
+import com.yet.spring.core.loggers.EventLogger;
 
 @Configuration
 public class LoggerConfig {

@@ -17,7 +17,8 @@ public class FileEventLogger implements EventLogger {
     @Value("${events.file:target/events_log.txt}")
     private String filename;
 
-    public FileEventLogger() {}
+    public FileEventLogger() {
+    }
 
     public FileEventLogger(String filename) {
         this.filename = filename;
@@ -27,7 +28,8 @@ public class FileEventLogger implements EventLogger {
     public void init() throws IOException {
         file = new File(filename);
         if (file.exists() && !file.canWrite()) {
-            throw new IllegalArgumentException("Can't write to file " + filename);
+            throw new IllegalArgumentException(
+                    "Can't write to file " + filename);
         } else if (!file.exists()) {
             file.createNewFile();
         }
