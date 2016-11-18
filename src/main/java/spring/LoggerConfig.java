@@ -1,15 +1,16 @@
 package spring;
 
-import java.util.*;
-
-import javax.annotation.Resource;
-
+import beans.EventType;
+import loggers.EventLogger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-import beans.EventType;
-import loggers.EventLogger;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.EnumMap;
+import java.util.Map;
 
 
 @Configuration
