@@ -1,14 +1,13 @@
 package loggers;
 
 import beans.Event;
+import org.springframework.stereotype.Component;
 
-public class ConsoleEventLogger implements EventLogger{
+@Component
+public class ConsoleEventLogger implements EventLogger {
 
-    public ConsoleEventLogger() {
-    }
-
-    public void logEvent(Event event)
-    {
+    @Override
+    public void logEvent(Event event) {
         System.out.println(event.toString());
     }
 }
