@@ -28,8 +28,7 @@ public class App {
     public App() {
     }
 
-    App(Client client, EventLogger defaultLogger,
-        Map<EventType, EventLogger> loggersMap) {
+    App(Client client, EventLogger defaultLogger, Map<EventType, EventLogger> loggersMap) {
         this.client = client;
         this.defaultLogger = defaultLogger;
         this.loggers = loggersMap;
@@ -73,5 +72,4 @@ public class App {
 
         logger.logEvent(event);
     }
-
 }

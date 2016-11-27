@@ -9,6 +9,12 @@ import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    <bean id="cacheFileEventLogger" class="loggers.CacheFileEventLogger" parent="fileEventLogger" destroy-method="destroy">
+        <constructor-arg value="5"/>
+    </bean>
+*/
+
 @Component
 public class CacheFileEventLogger extends FileEventLogger {
 

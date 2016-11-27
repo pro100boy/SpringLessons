@@ -14,6 +14,7 @@ public class FileEventLogger implements EventLogger {
 
     private File file;
 
+    //<constructor-arg value="target/events_log.txt"/>
     @Value("${events.file:target/events_log.txt}")
     private String filename;
 
@@ -24,12 +25,11 @@ public class FileEventLogger implements EventLogger {
         this.filename = filename;
     }
 
-    @PostConstruct
+    @PostConstruct  //аналог init-method="init" из XML
     public void init() throws IOException {
         file = new File(filename);
         if (file.exists() && !file.canWrite()) {
-            throw new IllegalArgumentException(
-                    "Can't write to file " + filename);
+            throw new IllegalArgumentException("Can't write to file " + filename);
         } else if (!file.exists()) {
             file.createNewFile();
         }
@@ -43,5 +43,4 @@ public class FileEventLogger implements EventLogger {
             e.printStackTrace();
         }
     }
-
 }

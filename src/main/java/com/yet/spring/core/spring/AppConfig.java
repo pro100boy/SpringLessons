@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.util.Assert;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -14,8 +15,17 @@ import java.util.Date;
 @PropertySource("classpath:client.properties")
 public class AppConfig {
 
+    // было так. И без конструктора
+    /*@Autowired
+    private Environment environment;*/
+
+    private final Environment environment;
+
     @Autowired
-    private Environment environment;
+    public AppConfig(Environment environment) {
+        Assert.notNull(environment, "Environment must not be null");
+        this.environment = environment;
+    }
 
     @Bean
     public Date newDate() {
