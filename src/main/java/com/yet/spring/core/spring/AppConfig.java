@@ -20,7 +20,7 @@ public class AppConfig {
     private Environment environment;*/
 
     private final Environment environment;
-
+    // Environment сразу создан в Спринг. Он его просто внедряет благодаря autowired.﻿
     @Autowired
     public AppConfig(Environment environment) {
         Assert.notNull(environment, "Environment must not be null");
@@ -45,5 +45,4 @@ public class AppConfig {
         client.setGreeting(environment.getProperty("greeting"));
         return client;
     }
-
 }

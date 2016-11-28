@@ -53,8 +53,8 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event [id=" + id + ", msg=" + msg + ", date="
-                + (dateFormat != null ? dateFormat.format(date) : date) + "]";
+        return "Event [id=" + getId() + ", msg=" + msg + ", date="
+                + (dateFormat != null ? dateFormat.format(getDate()) : getDate()) + "]";
     }
 
 }
