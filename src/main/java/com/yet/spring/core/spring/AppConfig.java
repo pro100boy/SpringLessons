@@ -8,9 +8,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.util.Assert;
 
-import java.text.DateFormat;
-import java.util.Date;
-
 @Configuration
 @PropertySource("classpath:client.properties")
 public class AppConfig {
@@ -27,15 +24,16 @@ public class AppConfig {
         this.environment = environment;
     }
 
-    @Bean
+    // эти методы убираем, т.к. в Event.java задаем из с пом. SpEL
+    /*@Bean
     public Date newDate() {
         return new Date();
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public DateFormat dateFormat() {
         return DateFormat.getDateTimeInstance();
-    }
+    }*/
 
     @Bean
     public Client client() {

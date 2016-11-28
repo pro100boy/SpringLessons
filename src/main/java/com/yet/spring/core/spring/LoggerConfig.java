@@ -49,10 +49,4 @@ public class LoggerConfig {
         map.put(EventType.ERROR, combinedEventLogger);
         return map;
     }
-
-    @Bean
-    public EventLogger defaultLogger() {
-        return cacheEventLogger;
-    }
-
 }

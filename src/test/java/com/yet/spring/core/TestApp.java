@@ -3,6 +3,7 @@ package com.yet.spring.core;
 import com.yet.spring.core.beans.Client;
 import com.yet.spring.core.beans.Event;
 import com.yet.spring.core.beans.EventType;
+import com.yet.spring.core.loggers.AbstractLogger;
 import com.yet.spring.core.loggers.EventLogger;
 import org.junit.Test;
 
@@ -84,16 +85,13 @@ public class TestApp {
         assertNotNull(infoLogger.getEvent());
     }
 
-    private void invokeLogEvent(App app, EventType type, Event event,
-                                String message) throws NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException {
-        Method method = app.getClass().getDeclaredMethod("logEvent",
-                EventType.class, Event.class, String.class);
+    private void invokeLogEvent(App app, EventType type, Event event, String message) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = app.getClass().getDeclaredMethod("logEvent", EventType.class, Event.class, String.class);
         method.setAccessible(true);
         method.invoke(app, type, event, message);
     }
 
-    private class DummyLogger implements EventLogger {
+    private class DummyLogger extends AbstractLogger {
 
         private Event event;
 
@@ -110,6 +108,10 @@ public class TestApp {
             this.event = event;
         }
 
-    };
+        @Override
+        protected void setName(String name) {
+            this.name = name;
+        }
 
+    }
 }
