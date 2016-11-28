@@ -20,8 +20,7 @@ public class App {
     @Autowired
     private Client client;
 
-    @Value("#{ T(com.yet.spring.core.beans.Event).isDay(8,17) ? "
-            + "cacheFileEventLogger : consoleEventLogger }")
+    @Value("#{ T(com.yet.spring.core.beans.Event).isDay(8,17) ? cacheFileEventLogger : consoleEventLogger }")
     private EventLogger defaultLogger;
 
     @Resource(name = "loggerMap")
