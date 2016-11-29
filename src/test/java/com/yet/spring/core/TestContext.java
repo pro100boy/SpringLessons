@@ -55,8 +55,7 @@ public class TestContext {
         ctx.scan(FileEventLogger.class.getPackage().getName());
         ctx.refresh();
 
-        EventLogger logger = ctx.getBean("fileEventLogger",
-                FileEventLogger.class);
+        EventLogger logger = ctx.getBean("fileEventLogger", FileEventLogger.class);
         Event event = new Event();
         String uuid = UUID.randomUUID().toString();
         event.setMsg(uuid);
@@ -64,7 +63,7 @@ public class TestContext {
 
         ctx.close();
 
-        String str = FileUtils.readFileToString(file);
+        String str = FileUtils.readFileToString(file, "UTF-8");
         assertTrue(str.contains(uuid));
     }
 

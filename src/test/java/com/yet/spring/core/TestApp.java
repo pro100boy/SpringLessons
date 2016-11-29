@@ -21,9 +21,7 @@ public class TestApp {
     private static final String MSG = "Hello";
 
     @Test
-    public void testClientNameSubstitution() throws IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException,
-            NoSuchMethodException, SecurityException {
+    public void testClientNameSubstitution() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
         Client client = createClient();
         DummyLogger dummyLogger = new DummyLogger();
 
@@ -33,13 +31,11 @@ public class TestApp {
 
         invokeLogEvent(app, null, event, MSG + " " + client.getId());
         assertTrue(dummyLogger.getEvent().getMsg().contains(MSG));
-        assertTrue(
-                dummyLogger.getEvent().getMsg().contains(client.getFullName()));
+        assertTrue(dummyLogger.getEvent().getMsg().contains(client.getFullName()));
 
         invokeLogEvent(app, null, event, MSG + " 0");
         assertTrue(dummyLogger.getEvent().getMsg().contains(MSG));
-        assertFalse(
-                dummyLogger.getEvent().getMsg().contains(client.getFullName()));
+        assertFalse(dummyLogger.getEvent().getMsg().contains(client.getFullName()));
     }
 
     private Client createClient() {
@@ -50,8 +46,7 @@ public class TestApp {
     }
 
     @Test
-    public void testCorrectLoggerCall() throws NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException {
+    public void testCorrectLoggerCall() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Client client = createClient();
         DummyLogger defaultLogger = new DummyLogger();
         DummyLogger infoLogger = new DummyLogger();
