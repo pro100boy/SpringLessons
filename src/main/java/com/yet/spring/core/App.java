@@ -1,5 +1,6 @@
 package com.yet.spring.core;
 
+import com.yet.spring.core.aspects.StatisticsAspect;
 import com.yet.spring.core.beans.Client;
 import com.yet.spring.core.beans.Event;
 import com.yet.spring.core.beans.EventType;
@@ -32,6 +33,9 @@ public class App {
             + "'. Default logger is ' + app.defaultLogger.name }")
     private String startupMessage;
 
+    @Autowired
+    private StatisticsAspect statisticsAspect;
+
     public App() {
     }
 
@@ -57,6 +61,12 @@ public class App {
         Event event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event, "Some event for 1");
 
+        event = ctx.getBean(Event.class);
+        app.logEvent(EventType.INFO, event, "One more event for 1");
+
+        event = ctx.getBean(Event.class);
+        app.logEvent(EventType.INFO, event, "And one more event for 1");
+
         client.setId("2");
         client.setFullName("Jane Doe");
         event = ctx.getBean(Event.class);
@@ -66,6 +76,8 @@ public class App {
         client.setFullName("Janet Jackson");
         event = ctx.getBean(Event.class);
         app.logEvent(null, event, "Some event for 3");
+
+        app.outputLoggingCounter();
 
         ctx.close();
     }
@@ -80,6 +92,15 @@ public class App {
         }
 
         logger.logEvent(event);
+    }
+
+    private void outputLoggingCounter() {
+        if (statisticsAspect != null) {
+            System.out.println("Loggers statistics. Number of calls: ");
+            for (Map.Entry<Class<?>, Integer> entry: statisticsAspect.getCounter().entrySet()) {
+                System.out.println("    " + entry.getKey().getSimpleName() + ": " + entry.getValue());
+            }
+        }
     }
 
     public EventLogger getDefaultLogger() {
