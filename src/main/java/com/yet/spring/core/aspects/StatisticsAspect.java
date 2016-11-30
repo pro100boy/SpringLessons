@@ -27,6 +27,7 @@ public class StatisticsAspect {
             counter.put(clazz, 0);
         }
         counter.put(clazz, counter.get(clazz) + 1);
+        //counter.merge(clazz, 1, Integer::sum);﻿
     }
 
     public Map<Class<?>, Integer> getCounter() {

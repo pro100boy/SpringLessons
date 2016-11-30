@@ -11,9 +11,10 @@
     <description>The project created throughout the course 'Spring Framework - The Basics'</description>
 
     <properties>
-        <spring.version>4.3.3.RELEASE</spring.version>
-        <junit.version>4.11</junit.version>
-        <mockito.version>2.2.12</mockito.version>
+        <spring.version>3.2.13.RELEASE</spring.version>
+        <!--<spring.version>4.3.3.RELEASE</spring.version>-->
+        <junit.version>4.12</junit.version>
+        <mockito.version>2.2.26</mockito.version>
         <java.version>1.8</java.version>
         <commons.io.version>2.5</commons.io.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
